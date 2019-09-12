@@ -2,18 +2,33 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
         <title>Wajeeh Sheikh's Web Page</title>
     </head>
 
     <body>
-        <!-- This is a comment -->
-        <h1>Hello Open Source!</h1>
+        <div class="paper container">
+        <h1>Welcome to Wajeeh's notepad</h1>
+        <h3>Write freely and press ctrl+s to save your work. Enjoy! :)</h3>
 
         <div id="note" contenteditable></div>
+        </div>
     </body>
 
     <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
+    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+    <scripthttps://unpkg.com/papercss@1.6.1/dist/paper.css></script>
+
     <script> const fs = new Filer.FileSystem();
+
+hotkeys.filter = function(event) {
+  
+        var tagName = (event.target || event.srcElement).tagName;
+        return !(tagName.isContentEditable || tagName == 'INPUT' || tagName == 'SELECT' || tagName == 'TEXTAREA');
+        }
+
              
          window.addEventListener('DOMContentLoaded', (event) => {
          console.log('DOM fully loaded and parsed');
@@ -30,6 +45,16 @@
                  }
                           
              });  
+
+            //  This function saves the work written in the notepad when ctrl+s is pressed
+             hotkeys('ctrl+s', function() {
+
+                fs.writeFile('/note', document.querySelector('#note').innerHTML, err => {
+                if (err) throw err;
+                else alert('Your note has been saved');
+                });
+             }); 
+             
         });
     </script>
 
