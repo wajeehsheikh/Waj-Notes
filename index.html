@@ -8,5 +8,29 @@
     <body>
         <!-- This is a comment -->
         <h1>Hello Open Source!</h1>
+
+        <div id="note" contenteditable></div>
     </body>
+
+    <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
+    <script> const fs = new Filer.FileSystem();
+             
+
+             fs.readFile('/note', 'utf8', function(err, data){
+                
+                 try{   
+                    
+                    if (err) throw err
+
+                    else (data);
+
+                 }catch(err){
+                    
+                    document.querySelector('#note').innerHTML = "Welcome to my notepad!";
+                 }
+                          
+             });  
+    
+    </script>
+
 </html>
