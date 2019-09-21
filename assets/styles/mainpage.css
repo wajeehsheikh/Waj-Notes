@@ -1,0 +1,13 @@
+body {
+    background-image: url(../images/cork_tile.jpg);
+    background-repeat: repeat;
+}
+
+.container {
+    margin-top: 5em;
+}
+
+#note {
+    padding: 1em;
+    background-color: #FAF0b3;
+}
