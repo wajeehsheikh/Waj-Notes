@@ -8,13 +8,17 @@
         <link rel="stylesheet" href="./assets/styles/mainpage.css">
         <title>Wajeeh Sheikh's Web Page</title>
     </head>
-
+    <style>
+        #note:empty:not(:focus):before {
+            content: attr(placeholder)
+        }
+    </style>
     <body>
         <div class="paper container">
         <h1>Welcome to Wajeeh's notepad</h1>
         <h3>Write freely and press ctrl+s to save your work. Enjoy! :)</h3>
 
-        <div id="note" contenteditable></div>
+        <div id="note" contenteditable placeholder="Click here and start typing.."></div>
         </div>
     </body>
 
@@ -42,7 +46,8 @@ hotkeys.filter = function(event) {
                         document.querySelector('#note').innerHTML = data;
                     }
                 }catch(err){
-                    document.querySelector('#note').innerHTML = "Welcome to my notepad!";
+                    //document.querySelector('#note').innerHTML = "Welcome to my notepad!";
+                    console.log("Error loading data..");
                  }
                           
              });  
