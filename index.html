@@ -19,7 +19,9 @@
         <h3>Write freely and press ctrl+s to save your work. Enjoy! :)</h3>
 
         <div id="note" contenteditable placeholder="Click here and start typing.."></div>
-        </div>
+        <button onclick="save()">Save</button>
+        <button onclick="remove()">Clear</button>
+    </div>
     </body>
 
     <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
@@ -62,6 +64,15 @@ hotkeys.filter = function(event) {
              }); 
              
         });
+
+        //saves text from notepad
+        function save() {
+            fs.writeFile('/note', document.querySelector('#note').innerHTML);
+        }
+        //clearing text on notepad
+        function remove() {
+            document.querySelector('#note').innerHTML = ""
+        }
     </script>
 
 </html>
