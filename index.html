@@ -62,6 +62,14 @@ hotkeys.filter = function(event) {
                 else alert('Your note has been saved');
                 });
              }); 
+
+            //  This function clears the work written in the notepad when ctrl+c is pressed
+             hotkeys('ctrl+c', function() {
+                fs.writeFile('/note', document.querySelector('#note').innerHTML="", err => {
+                if (err) throw err;
+                else alert('Your note has been cleared');
+                });
+             });  
              
         });
 
