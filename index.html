@@ -16,10 +16,12 @@
     <body>
         <div class="paper container">
         <h1>Welcome to Wajeeh's notepad</h1>
-        <h3>Write freely and press ctrl+s to save your work. Enjoy! :)</h3>
+        <h4>Write freely and press ctrl+s to save or ctrl+c to clear your work . Enjoy! :)</h4>
 
         <div id="note" contenteditable placeholder="Click here and start typing.."></div>
-        </div>
+        <button onclick="save()">Save</button>
+        <button onclick="remove()">Clear</button>
+    </div>
     </body>
 
     <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
@@ -60,8 +62,25 @@ hotkeys.filter = function(event) {
                 else alert('Your note has been saved');
                 });
              }); 
+
+            //  This function clears the work written in the notepad when ctrl+c is pressed
+             hotkeys('ctrl+c', function() {
+                fs.writeFile('/note', document.querySelector('#note').innerHTML="", err => {
+                if (err) throw err;
+                else alert('Your note has been cleared');
+                });
+             });  
              
         });
+
+        //saves text from notepad
+        function save() {
+            fs.writeFile('/note', document.querySelector('#note').innerHTML);
+        }
+        //clearing text on notepad
+        function remove() {
+            document.querySelector('#note').innerHTML = ""
+        }
     </script>
 
 </html>
