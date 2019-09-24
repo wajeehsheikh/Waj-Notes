@@ -73,6 +73,12 @@ hotkeys.filter = function(event) {
              
         });
 
+        //autosaves every 5 seconds 
+        var autosave = setInterval(setInterval(function () {
+            save();
+           
+        }, 5000));
+
         //saves text from notepad
         function save() {
             fs.writeFile('/note', document.querySelector('#note').innerHTML);
